@@ -15,17 +15,14 @@ export default function Header() {
     >
       <a
         href="#top"
-        className="group flex flex-col items-start"
+        className="group block shrink-0"
         aria-label="Gabriel Arce — Tenor"
       >
-        {/* Overlapping G (silver) + A (gold) monogram — matches ref */}
-        <span className="relative flex h-[2.1rem] items-end font-display text-[2rem] leading-none tracking-tight md:h-[2.35rem] md:text-[2.35rem]">
-          <span className="relative z-10 text-silver">G</span>
-          <span className="relative z-0 -ml-[0.28em] text-gold">A</span>
-        </span>
-        <span className="mt-1 font-sans text-[0.55rem] font-light uppercase tracking-[0.55em] text-silver/80">
-          Tenor
-        </span>
+        <img
+          src="/img/logo.png"
+          alt="GA Tenor"
+          className="h-14 w-14 object-contain mix-blend-lighten sm:h-16 sm:w-16 md:h-[4.5rem] md:w-[4.5rem]"
+        />
       </a>
 
       <nav

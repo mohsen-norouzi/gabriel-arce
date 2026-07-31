@@ -1,30 +1,44 @@
-import portrait from '../assets/hero/portrait.png'
-
-/** Photographic right plane only — no baked UI text. */
+/**
+ * Layered portraits — girl values locked from Leva.
+ * Girl: x=-53, y=-115, scale=0.74, opacity=0.47
+ */
 export default function HeroPortrait() {
   return (
     <div
       data-hero="portrait"
-      className="pointer-events-none absolute inset-y-0 right-0 z-20 w-[min(62vw,760px)] md:w-[min(56vw,820px)] lg:w-[min(54vw,900px)]"
+      className="pointer-events-none absolute inset-0 z-20 overflow-hidden"
     >
+      <div
+        data-hero="girl"
+        className="absolute top-[16%] right-[-1%] z-10 h-[48%] md:top-[14%] md:right-[1%] md:h-[52%] lg:right-[3%] lg:h-[55%]"
+        style={{
+          transform: 'translate(-53px, -115px) scale(0.74)',
+          transformOrigin: 'right center',
+        }}
+      >
+        <div data-hero="girl-parallax" className="h-full will-change-transform">
+          <img
+            src="/img/girl.png"
+            alt=""
+            aria-hidden="true"
+            data-hero="girl-img"
+            className="h-full w-auto max-w-none object-contain object-right"
+            style={{
+              opacity: 0.47,
+              maskImage:
+                'linear-gradient(to top, transparent 0%, black 28%, black 100%)',
+              WebkitMaskImage:
+                'linear-gradient(to top, transparent 0%, black 28%, black 100%)',
+            }}
+          />
+        </div>
+      </div>
+
       <img
-        src={portrait}
+        src="/img/gabriel.png"
         alt="Gabriel Arce, tenor"
         data-hero="portrait-img"
-        className="absolute bottom-0 right-0 h-full w-auto max-w-none object-contain object-right-bottom md:right-[-1%] lg:right-[-3%]"
-      />
-
-      <div
-        className="absolute inset-y-0 left-0 w-[22%] bg-gradient-to-r from-void via-void/70 to-transparent"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-void via-void/50 to-transparent"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-void to-transparent"
-        aria-hidden="true"
+        className="absolute bottom-0 right-0 z-20 h-[88%] w-auto max-w-none object-contain object-right-bottom md:h-[92%] lg:h-[95%] lg:right-[-1%]"
       />
     </div>
   )
