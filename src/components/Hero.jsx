@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from 'react'
+import { useEffect, useLayoutEffect, useRef } from 'react'
 import gsap from 'gsap'
 import Header from './Header'
 import HeroAtmosphere from './HeroAtmosphere'
@@ -6,8 +6,9 @@ import HeroContent from './HeroContent'
 import HeroPortrait from './HeroPortrait'
 import Scene from './Scene'
 
-export default function Hero() {
+export default function Hero({ playing = false }) {
   const rootRef = useRef(null)
+  const pulseRef = useRef(null)
 
   useLayoutEffect(() => {
     const root = rootRef.current
@@ -77,6 +78,45 @@ export default function Hero() {
       ctx.revert()
     }
   }, [])
+
+  // Slow breathe on the gold rings while music plays
+  useEffect(() => {
+    const root = rootRef.current
+    if (!root) return
+
+    const rings = root.querySelectorAll('[data-hero="arc-ring"]')
+    if (!rings.length) return
+
+    pulseRef.current?.kill()
+    pulseRef.current = null
+
+    if (!playing) {
+      gsap.to(rings, {
+        scale: 1,
+        duration: 1.2,
+        ease: 'sine.out',
+        transformOrigin: '300px 430px',
+        overwrite: 'auto',
+      })
+      return
+    }
+
+    pulseRef.current = gsap.to(rings, {
+      scale: (i) => 1.05 + i * 0.025,
+      duration: (i) => 3.4 + i * 0.6,
+      yoyo: true,
+      repeat: -1,
+      ease: 'sine.inOut',
+      stagger: { each: 0.45, from: 'start' },
+      transformOrigin: '300px 430px',
+      overwrite: 'auto',
+    })
+
+    return () => {
+      pulseRef.current?.kill()
+      pulseRef.current = null
+    }
+  }, [playing])
 
   return (
     <section

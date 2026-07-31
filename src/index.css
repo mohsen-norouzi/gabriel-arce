@@ -77,16 +77,24 @@ body {
 
 .audio-bar {
   display: block;
+  height: calc(6px + var(--bar-peak, 0.6) * 22px);
   transform-origin: bottom center;
+  transition:
+    height 0.65s ease,
+    opacity 0.65s ease,
+    transform 0.65s ease,
+    background-color 0.3s ease;
 }
 
 .audio-bar--paused {
-  height: 3px !important;
-  opacity: 0.45;
+  height: 3px;
+  opacity: 0.4;
+  transform: scaleY(1);
+  animation: none;
 }
 
 .audio-bar--playing {
-  height: calc(6px + var(--bar-peak, 0.6) * 22px);
+  opacity: 1;
   animation: eq-bounce 0.85s ease-in-out infinite alternate;
 }
 
@@ -106,5 +114,12 @@ body {
     animation: none;
     transform: scaleY(0.7);
   }
+}
+
+button,
+[role='button'],
+a.nav-link,
+summary {
+  cursor: pointer;
 }
 

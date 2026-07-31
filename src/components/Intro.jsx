@@ -82,7 +82,7 @@ export default function Intro({ onEnter }) {
           type="button"
           data-intro="enter"
           onClick={handleEnter}
-          className="group mt-8 flex flex-col items-center gap-3 md:mt-10"
+          className="group mt-8 flex cursor-pointer flex-col items-center gap-3 md:mt-10"
           aria-label="Enter site"
         >
           <span className="flex h-11 w-11 items-center justify-center rounded-full border border-gold/75 text-gold transition-all duration-500 group-hover:scale-110 group-hover:border-gold group-hover:shadow-[0_0_22px_rgba(197,160,89,0.4)] md:h-12 md:w-12">
