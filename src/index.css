@@ -74,3 +74,37 @@ body {
     transform: scaleX(1);
   }
 }
+
+.audio-bar {
+  display: block;
+  transform-origin: bottom center;
+}
+
+.audio-bar--paused {
+  height: 3px !important;
+  opacity: 0.45;
+}
+
+.audio-bar--playing {
+  height: calc(6px + var(--bar-peak, 0.6) * 22px);
+  animation: eq-bounce 0.85s ease-in-out infinite alternate;
+}
+
+@keyframes eq-bounce {
+  0% {
+    transform: scaleY(0.35);
+    opacity: 0.65;
+  }
+  100% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .audio-bar--playing {
+    animation: none;
+    transform: scaleY(0.7);
+  }
+}
+

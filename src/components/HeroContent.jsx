@@ -76,7 +76,7 @@ export default function HeroContent() {
 
       <p
         data-hero="footer-line"
-        className="absolute bottom-8 left-5 max-w-[8rem] font-sans text-[0.55rem] font-light uppercase leading-[1.8] tracking-[0.3em] text-silver/35 sm:left-8 md:bottom-10 md:left-10 lg:left-14 xl:left-16"
+        className="absolute bottom-8 left-[4.5rem] max-w-[8rem] font-sans text-[0.55rem] font-light uppercase leading-[1.8] tracking-[0.3em] text-silver/35 sm:left-24 md:bottom-10 md:left-28 lg:left-32"
       >
         From the Stage
         <br />
